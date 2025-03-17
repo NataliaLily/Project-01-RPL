@@ -34,10 +34,12 @@
                         <td>{{($category->status == 1) ? 'aktif' : "Tidak Aktif" }}</td>
                         <td>
                             <a href="{{route('category.edit', $category->id)}}" class="btn btn-success"><i class="fa fa-edit"></i></a>
-                            <a href="{{route('category.delete', $category->id)}}"
-                               onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"
-                               class="btn btn-danger"><i class="fa fa-trash"></i></a>
-
+                            
+                            {{--Konfirmasi Delete--}}
+                            <form id="delete-kategori-{{$category->id}}" action="{{route('category.delete', $category->id)}}" method="post" style="display:none;">
+                                @csrf
+                            </form>
+                            <a onclick="confirmDelete({{$category->id}})" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
 
@@ -48,4 +50,28 @@
             </div>
         </div>
     </section>
+
+    <script>
+        function confirmDelete(id){
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                    }).then(()=>{
+                        document.getElementById('delete-kategori-' + id).submit();
+                    });
+                }
+            });
+       }
+    </script>
 @endsection

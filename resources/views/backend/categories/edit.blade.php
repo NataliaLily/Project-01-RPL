@@ -21,7 +21,7 @@
 
 
                         </select>
-
+                        
                         <input type="hidden" name="id" value="{{$categories->id}}">
                         <input type="submit" class="btn btn-primary" value="Simpan">
                     </div>

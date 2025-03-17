@@ -59,6 +59,7 @@ public function update(Request $request){
 public function delete($id){
         $categories = Category::findOrFail($id);
         $categories->delete();
+        
         return redirect()->route('category.index')-> with ('status', 'Category deleted successfully');
 }
 
