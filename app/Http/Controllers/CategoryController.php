@@ -21,12 +21,45 @@ class CategoryController extends Controller
         return view('backend.categories.add');
     }
 
-    // public function store(Request $request){
-    //     $category = new Category();
-    //     $category->name = $request->name;
-    //     $category->save();
+    public function store(Request $request){
+        $category = new Category();
+        $category->name =$request ->name;
+        $category->save();
 
-    //     return redirect()->route('category.index');
-    // }
-    
+        return redirect()->route('category.index')-> with ('status', 'Category added successfully');
+    }
+    public function edit($id){
+
+        $categories = Category::findOrFail($id);
+        return view('backend.categories.edit', compact('categories'));
+}
+
+public function update(Request $request){
+
+        #memvalidasi data yang di input
+
+        $this->validate($request,[
+            'id' => 'required',
+            'name' => 'required',
+            'status' => 'required',
+            ]);
+
+
+
+        #menyimpam data
+    $category = Category::findOrFail($request->id);
+    $category->name = $request->name;
+    $category->status = $request->status;
+    $category->save();
+
+        #kemnbali ke halaman
+    return redirect()->route('category.index')-> with ('data', 'Category updated successfully');
+}
+
+public function delete($id){
+        $categories = Category::findOrFail($id);
+        $categories->delete();
+        return redirect()->route('category.index')-> with ('status', 'Category deleted successfully');
+}
+
 }

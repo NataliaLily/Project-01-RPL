@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>RPL | @yield('judul')</title>
+    <title>RPL</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -21,7 +21,10 @@
     <div class="card card-outline card-primary">
         <div class="card-body">
             <p class="login-box-msg">RPL Login</p>
-            <form action="{{--{{route('auth.verify')}}--}}" method="post">
+            @if(session('pesan'))
+                <div class="alert alert-danger" style="color: #0c5460">{{session('pesan')}}</div>
+            @endif
+            <form action="{{route('auth.verify')}}" method="post">
                 @csrf
                 <div class="input-group mb-3">
                     <input type="email" name="email" class="form-control" placeholder="Email">
@@ -40,6 +43,7 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">LOGIN</button>
+                <style class="login"></style>
                 <a href="#" type="submit" class="btn btn-primary btn-block">REGISTER</a>
             </form>
         </div>

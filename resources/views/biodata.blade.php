@@ -1,21 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Biodata</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-
-<h3>Biodata</h3>
-<form action="{{route('biodata.simpan')}}" method="post">
-@csrf
-<p>
-    Nama : <br/>
-    <input type="text" name="nama" placeholder=" Nama">
-</p>
-<p>
-    <input type="submit" value="Simpan">
-</p>
-</form>
+    <H3>Natalia Lily</H3>
+    <form action="{{route('biodata.simpan')}}" method="post">
+        @csrf
+        <p>
+            nama : <br/>
+            <input type="text" name="nama" placeeholder= "nama">
+        </p>
+        <p>
+            <input type="submit" value = "Simpan">
+        </p>
+        <p>
+            password : <br/>
+            <input type="password" name="password" placeeholder= "password">
+            </p>
+            <p>
+                <input type="submit" value = "Simpan">
+        </p>
+    </form>
 
 </body>
 </html>

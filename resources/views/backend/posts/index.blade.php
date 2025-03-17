@@ -1,6 +1,6 @@
 @extends('layout.main')
 
-@section('title', 'list Categories')
+@section('title', 'Posts')
 
 @section('content')
 
@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-4">
-                    <a href="{{route('category.add')}}" class="btn btn-primary mb-3">Tambah Category</a>
+                    <a href="{{route('post.add')}}" class="btn btn-primary mb-3">Tambah Post</a>
                 </div>
                 <div class="col-lg-4">
                 </div>
@@ -21,23 +21,27 @@
                     <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama Kategori</th>
-                        <th>Status</th>
+                        <th>Post Title</th>
+                        <th>Post Content</th>
+                        <th>Post Image</th>
+                        <th>Post Category</th>
                         <th>Action</th>
-                                </tr>
+                    </tr>
                     </thead>
                     <tbody>
-                    @foreach($categories as $category)
+                    @foreach ($posts as $post)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$category->name}}</td>
-                        <td>{{($category->status == 1) ? 'aktif' : "Tidak Aktif" }}</td>
+                        <td>{{$post->post_title}}</td>
+                        <td>{{$post->post_content}}</td>
                         <td>
-                            <a href="{{route('category.edit', $category->id)}}" class="btn btn-success"><i class="fa fa-edit"></i></a>
-                            <a href="{{route('category.delete', $category->id)}}"
-                               onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"
-                               class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            <img src="{{route('storage', $post->post_image)}}" alt="Post Image" style="width: 50px; height: 50px">
+                        </td>
+                        <td>{{$post->category->category_name}}</td>
 
+                        <td>
+                            <a href="#" class="btn btn-success"><i class="fa fa-edit"></i></a>
+                            <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
 
