@@ -18,5 +18,11 @@ class UsersSeeder extends Seeder
             'email' => 'admin@gmail',
             'password'=> bcrypt('admin'),
         ]);
+
+        /**
+         * email dan password login
+         * email : admin@gmail
+         * password : admin
+         */
     }
 }

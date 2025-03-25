@@ -144,11 +144,10 @@
                         </a>
                     </li>
                     <li class="nav-item menu-open">
-                        <a href="{{Route('auth.verify')}}" class="nav-link ">
-                            <i class="nav-icon fas fa-sign-out"></i>
+                        <a href="{{Route('post.index')}}" class="nav-link ">
+                            <i class="nav-icon fas fa-upload"></i>
                             <p>
-                                logout
-
+                                Post
                             </p>
                         </a>
                     </li>

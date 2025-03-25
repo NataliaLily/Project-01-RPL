@@ -43,7 +43,7 @@
                                 <td>
                                     <a href="{{ route('post.edit', $post->id) }}" class="btn btn-success"><i
                                             class="fa fa-edit"></i></a>
-                                            <a href="#" class="btn btn-success"><i class="fa fa-edit"></i></a>
+                                            {{-- <a href="#" class="btn btn-success"><i class="fa fa-edit"></i></a> --}}
                                             {{--Konfirmasi Delete--}}
                                             <form id="delete-post-{{$post->id}}" action="{{route('post.delete', $post->id)}}" method="post" style="display:none;">
                                                @csrf
