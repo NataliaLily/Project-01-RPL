@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -24,4 +25,12 @@ class AuthController extends Controller
             return redirect(route('auth.index'))->with('pesan', 'Email atau Password Salah');
         }
     }
+
+    public function logout()
+    {
+        if(Auth::guard('user')->check()){
+            Auth::guard('user')->logout();
+        }
+        return redirect(route('auth.index'));
+}
 }

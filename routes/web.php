@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
@@ -26,6 +28,10 @@ Route::get('dashboard', [\App\Http\Controllers\DashboardController::class, 'inde
 Route::post('biodata', [\App\Http\Controllers\DashboardController::class, 'simpan'])->name('biodata.simpan');
 Route::get('/login', [\App\Http\Controllers\AuthController::class, 'index'])->name('auth.index');
 Route::post('/login', [\App\Http\Controllers\AuthController::class, 'verify'])->name('auth.verify');
+Route::get('/reset-password',[DashboardController::class,'resetPassword'])->name('dashboard.resetPassword');
+Route::post('/reset-password',[DashboardController::class,'prosesResetPassword'])->name('dashboard.ProsesResetPassword');
+
+Route::get('/logout',[AuthController::class, 'logout'])->name('auth.logout');
 
 Route::group(['middleware' => ['auth:user']], function () {
     Route::prefix('admin')->group(function () {

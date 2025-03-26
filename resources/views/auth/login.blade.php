@@ -43,6 +43,7 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">LOGIN</button>
+                <p></p>
                 <style class="login"></style>
                 <a href="#" type="submit" class="btn btn-primary btn-block">REGISTER</a>
             </form>
