@@ -3,7 +3,7 @@
 @section('content')
     <section class="content">
         <div class="container-fluid">
-            <form action="#" method="post">
+            <form action="{{route('category.store')}}" method="post">
                 @csrf
                 <div class="row">
                     <div class="col-lg-4">
